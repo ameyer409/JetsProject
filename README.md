@@ -1,5 +1,5 @@
 # JetsProject
-![](ihttps://static.wikia.nocookie.net/gundam/images/7/77/MSZ-006_-_Zeta_Gundam_-_Front_View.jpg/revision/latest?cb=20180630134003)
+![](https://static.wikia.nocookie.net/gundam/images/7/77/MSZ-006_-_Zeta_Gundam_-_Front_View.jpg/revision/latest?cb=20180630134003)
 
 ## Program Overview
 This program prints a menu of options for the user to choose from. The options include the following:
