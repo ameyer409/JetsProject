@@ -1,5 +1,7 @@
 package com.skilldistillery.jetsproject;
 
+import java.util.concurrent.TimeUnit;
+
 public class Zaku extends GundamBlueprint implements ZakuBazooka{
 
 	public Zaku(String model, double speedMPH, int rangeMPG, long price) {
@@ -17,8 +19,14 @@ public class Zaku extends GundamBlueprint implements ZakuBazooka{
 		return 0;
 	}
 
-	public void shoot() {
-		
+	public void shoot() throws Exception{
+		System.out.println(getModel() + " takes aim");
+		TimeUnit.MILLISECONDS.sleep(1000);
+		System.out.println("Shoots bazooka");
+		TimeUnit.MILLISECONDS.sleep(200);
+		System.out.println("BOOM!");
+		TimeUnit.MILLISECONDS.sleep(1000);
+		System.out.println();
 	}
 	
 	@Override

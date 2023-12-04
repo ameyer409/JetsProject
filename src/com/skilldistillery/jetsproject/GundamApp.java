@@ -15,11 +15,11 @@ public class GundamApp {
 
 	public void run() {
 		hangar = new GundamHangar();
-		Gundam a = new Gundam("White", 100, 10000, 20000);
-		Gundam b = new Gundam("Gray", 100, 10000, 20000);
-		Zaku c = new Zaku("Zaku I", 100, 10000, 20000);
-		Zaku d = new Zaku("Zaku II", 100, 10000, 20000);
-		MSZ006 Zeta = new MSZ006("MSZ-006", 1000, 50000, 20000);
+		Gundam a = new Gundam("White", 3500, 10000, 200000);
+		Gundam b = new Gundam("Gray", 350, 10000, 150000);
+		Zaku c = new Zaku("Zaku I", 300, 80000, 100000);
+		Zaku d = new Zaku("Zaku II", 300, 80000, 100000);
+		MSZ006 Zeta = new MSZ006("MSZ-006", 1000, 50000, 2000000);
 		hangar.getGundams().add(a);
 		hangar.getGundams().add(b);
 		hangar.getGundams().add(c);
@@ -43,16 +43,16 @@ public class GundamApp {
 				longestRange();
 				break;
 			case 5:
-				System.out.println("Not yet Implemented");
+				shootBazookas();
 				break;
 			case 6:
-				System.out.println("Not yet Implemented");
+				saberAttack();
 				break;
 			case 7:	
-				System.out.println("Not yet Implemented");
+				loadGundam();
 				break;
 			case 8:
-				System.out.println("Not yet Implemented");
+				removeGundam();
 				break;
 			case 9:
 				System.out.println("Goodbye!");
@@ -69,8 +69,8 @@ public class GundamApp {
 		System.out.println("2. Release all Gundams");
 		System.out.println("3. View Fastest Gundam");
 		System.out.println("4. View Gundam with Longest Range");
-		System.out.println("5. create method for this");
-		System.out.println("6. create method for this");
+		System.out.println("5. Shoot Bazookas");
+		System.out.println("6. Beam Saber Attack!");
 		System.out.println("7. Load Gundam into hangar");
 		System.out.println("8. Remove Gundam from hangar");
 		System.out.println("9. Quit Program");
@@ -116,6 +116,69 @@ public class GundamApp {
 		System.out.println(furthest);
 		System.out.println();
 		
+	}
+	
+	public void loadGundam() {
+		Gundam g;
+		String nextModel;
+		double nextSpeed;
+		int nextRange;
+		long nextPrice;
+		System.out.print("Please enter the Gundam Model: ");
+		nextModel = kb.next();
+		System.out.println("Please enter the Gundam Max speed (in miles per hour): ");
+		nextSpeed = kb.nextDouble();
+		System.out.println("Please enter the Gundam fuel range (in miles)");
+		nextRange = kb.nextInt();
+		System.out.println("Please enter the Gundam price");
+		nextPrice = kb.nextLong();
+		g = new Gundam(nextModel, nextSpeed, nextRange, nextPrice);
+		hangar.getGundams().add(g);
+		System.out.println("Gundam is now ready for combat.");
+		System.out.println();
+		
+	}
+	
+	public void removeGundam() {
+		int hangarIndex;
+		for(int i = 0; i< hangar.getGundams().size(); i++) {
+			GundamBlueprint g = hangar.getGundams().get(i);
+			System.out.println((i+1) + ": " + g.getModel());
+		}
+		System.out.println("Select a Gundam to remove");
+		hangarIndex = kb.nextInt();
+		hangarIndex--;
+		System.out.println(hangar.getGundams().get(hangarIndex).getModel() + " has been removed");
+		hangar.getGundams().remove(hangarIndex);
+		System.out.println();
+	}
+	
+	public void shootBazookas() {
+		for(GundamBlueprint g : hangar.getGundams()) {
+			if(g instanceof ZakuBazooka) {
+				try {
+					((ZakuBazooka) g).shoot();
+				}
+				catch (Exception e) {
+					System.out.println("Exception Caught");
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	public void saberAttack() {
+		for(GundamBlueprint g : hangar.getGundams()) {
+			if(g instanceof MSZ006) {
+				try {
+					((MSZ006) g).slash();
+				}
+				catch (Exception e) {
+					System.out.println("Exception Caught");
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 }
