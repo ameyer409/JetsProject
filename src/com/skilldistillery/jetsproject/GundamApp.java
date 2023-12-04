@@ -124,8 +124,10 @@ public class GundamApp {
 		double nextSpeed;
 		int nextRange;
 		long nextPrice;
-		System.out.print("Please enter the Gundam Model: ");
-		nextModel = kb.next();
+		try {
+		System.out.println("Please enter the Gundam Model: ");
+		kb.nextLine();
+		nextModel = kb.nextLine();
 		System.out.println("Please enter the Gundam Max speed (in miles per hour): ");
 		nextSpeed = kb.nextDouble();
 		System.out.println("Please enter the Gundam fuel range (in miles)");
@@ -136,6 +138,10 @@ public class GundamApp {
 		hangar.getGundams().add(g);
 		System.out.println("Gundam is now ready for combat.");
 		System.out.println();
+		}
+		catch (Exception e) {
+			System.out.println("Invalid input. Please enter inputs with appropriat values");
+		}
 		
 	}
 	
@@ -145,12 +151,17 @@ public class GundamApp {
 			GundamBlueprint g = hangar.getGundams().get(i);
 			System.out.println((i+1) + ": " + g.getModel());
 		}
+		try {
 		System.out.println("Select a Gundam to remove");
 		hangarIndex = kb.nextInt();
 		hangarIndex--;
 		System.out.println(hangar.getGundams().get(hangarIndex).getModel() + " has been removed");
 		hangar.getGundams().remove(hangarIndex);
 		System.out.println();
+		}
+		catch (Exception e) {
+			System.out.println("number is outside array bounds");
+		}
 	}
 	
 	public void shootBazookas() {
