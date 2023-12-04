@@ -19,7 +19,7 @@ public class Zaku extends GundamBlueprint implements ZakuBazooka{
 		return 0;
 	}
 
-	public void shoot() throws Exception{
+	public void shoot() throws InterruptedException{
 		System.out.println(getModel() + " takes aim");
 		TimeUnit.MILLISECONDS.sleep(1000);
 		System.out.println("Shoots bazooka");
