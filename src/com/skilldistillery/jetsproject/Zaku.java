@@ -8,8 +8,7 @@ public class Zaku extends GundamBlueprint implements ZakuBazooka{
 
 	@Override
 	public void fly() {
-		// TODO Auto-generated method stub
-		
+		System.out.println(toString() + "\ntime before fuel runs out: " + (getRange()/getSpeedMPH()));
 	}
 
 	@Override
@@ -18,5 +17,13 @@ public class Zaku extends GundamBlueprint implements ZakuBazooka{
 		return 0;
 	}
 
+	public void shoot() {
+		
+	}
 	
+	@Override
+	public String toString() {
+		return "Gundam Model: " + getModel() + "\nSpeed in MPH: " + getSpeedMPH() + "\nRange in miles: "
+				+ getRange() + "\nPrice: " + getPrice();
+	}
 }

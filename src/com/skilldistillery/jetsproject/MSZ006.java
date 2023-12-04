@@ -8,8 +8,7 @@ public class MSZ006 extends GundamBlueprint implements BeamSaber{
 
 	@Override
 	public void fly() {
-		// TODO Auto-generated method stub
-		
+		System.out.println(toString() + "\ntime before fuel runs out: " + (getRange()/getSpeedMPH()));
 	}
 
 	@Override
@@ -18,4 +17,13 @@ public class MSZ006 extends GundamBlueprint implements BeamSaber{
 		return 0;
 	}
 
+	public void slash() {
+		
+	}
+	
+	@Override
+	public String toString() {
+		return "Gundam Model: " + getModel() + "\nSpeed in MPH: " + getSpeedMPH() + "\nRange in miles: "
+				+ getRange() + "\nPrice: " + getPrice();
+	}
 }
